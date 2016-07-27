@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.util.Random;
 
 /**
  * Class BallDemo - a short demonstration showing animation with the 
@@ -26,14 +27,23 @@ public class BallDemo
     public void bounce()
     {
         int ground = 400;   // position of the ground line
-
-        myCanvas.setVisible(true);
-
+                myCanvas.setVisible(true);
         // draw the ground
         myCanvas.drawLine(50, ground, 550, ground);
-
+        
+        Random aleatorio = new Random(); //------------------------------------------------------------------- 0100
+        int posicionX = aleatorio.nextInt(80);
+        int posicionY = aleatorio.nextInt(300);
+        int radio = aleatorio.nextInt(50) +11;
+        
+        float RED = aleatorio.nextFloat();
+        float BLUE = aleatorio.nextFloat();
+        float GREEN = aleatorio.nextFloat();
+        
+        Color color = new Color(RED, BLUE, GREEN);
+        
         // crate and show the balls
-        BouncingBall ball = new BouncingBall(50, 50, 16, Color.BLUE, ground, myCanvas);
+        BouncingBall ball = new BouncingBall(posicionX, posicionY, radio, color, ground, myCanvas);
         ball.draw();
         BouncingBall ball2 = new BouncingBall(70, 80, 20, Color.RED, ground, myCanvas);
         ball2.draw();
