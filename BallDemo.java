@@ -61,7 +61,7 @@ public class BallDemo
             //creamos la  bola
             bolas.add(new BoxBall(posInix, posIniy, diametro, colorA, 
                     400, 50, 50, 550, 
-                     ladx, lady, myCanvas)); //
+                     ladx, lady, myCanvas)); // 
             bolas.get(cont).draw();
         }
 

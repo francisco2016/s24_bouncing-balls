@@ -35,7 +35,7 @@ public class BoxBall
      * @param drawingCanvas  the canvas to draw this ball on
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,int posicionSuelo,  int posicionTecho,  
-    int posicionLadoIzquierdo, int posicionLadoDerecho, int xSpeed, int ySpeed, Canvas drawingCanvas)
+    int posicionLadoIzquierdo, int posicionLadoDerecho, int xSpeed, int ySpeed, Canvas drawingCanvas)//
     {
         xPosition = xPos;
         yPosition = yPos;
