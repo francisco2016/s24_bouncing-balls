@@ -2,11 +2,7 @@ import java.awt.Color;
 import java.util.Random;
 import java.util.ArrayList;
 /**
- * Class BallDemo - a short demonstration showing animation with the 
- * Canvas class. 
- *
- * @author Michael KÃ¶lling and David J. Barnes
- * @version 2011.07.31
+ * Francisco septiembre.
  */
 
 public class BallDemo   
@@ -19,6 +15,64 @@ public class BallDemo
     public BallDemo()
     {
         myCanvas = new Canvas("Ball Demo", 600, 500);
+
+    }
+
+    /**
+     * 
+     */
+    public void boxBounce(int numBolas2){//--------------------------------------------------------------------------- 0101
+
+        Random aleatorio = new Random();
+        myCanvas.setVisible(true);
+        //para dibujar el rectángulo.
+        myCanvas.drawLine(50, 50, 550, 50);// (50 d x y 50 de y) y (550 d x y 50 de y)
+        myCanvas.drawLine(550, 50, 550, 400);//barra derecha 550
+        myCanvas.drawLine(550, 400, 50, 400);//suelo 400
+        myCanvas.drawLine(50, 400, 50, 50);  //izquierda 500
+
+        ArrayList<BoxBall> bolas = new ArrayList<>();
+        for (int cont = 0; cont < numBolas2; cont++)
+        {
+            int diametro = aleatorio.nextInt(25)+ 5;//calcula el diametro 
+            Color colorA = new Color(aleatorio.nextInt(255),aleatorio.nextInt(255),aleatorio.nextInt(255));
+
+            int ladx = aleatorio.nextInt(2);//elige al direccion aleatoriamente entre 0 y 2
+            int lady = aleatorio.nextInt(2);
+            if (ladx == 0)
+            {
+                ladx = -1;
+            }
+            if (lady == 0)
+            {
+                lady = -1;
+            }
+
+            int posInix = aleatorio.nextInt(500);
+            int posIniy = aleatorio.nextInt(350);
+            if(posInix < 50)
+            {
+                posInix = 100;
+            }
+            if(posIniy < 50)
+            {
+                posIniy = 100;
+            }
+            //creamos la  bola
+            bolas.add(new BoxBall(posInix, posIniy, diametro, colorA, 
+                    400, 50, 50, 550, 
+                     ladx, lady, myCanvas)); //
+            bolas.get(cont).draw();
+        }
+
+        while(true)
+        {
+            myCanvas.wait(50);           // small delay hace que se pare la bola durante un instante
+            for (int cont = 0;cont<numBolas2;cont++)
+            {
+                bolas.get(cont).move();
+            }
+        }
     }
 
     /**
@@ -54,14 +108,14 @@ public class BallDemo
         boolean finished =  false;
         while(!finished) {
             myCanvas.wait(50);           // small delay
-            
+
             for(BouncingBall bolas3: bolas2){//recorro la colección bolas2 para poder dar movimiento a cada bola
-            bolas3.move();
-            // stop once ball has travelled a certain distance on x axis
-            if(bolas3.getXPosition() >= 550) {//si una de las bolas llega a esta posición, la animación se para.
-                finished = true;
+                bolas3.move();
+                // stop once ball has travelled a certain distance on x axis
+                if(bolas3.getXPosition() >= 550) {//si una de las bolas llega a esta posición, la animación se para.
+                    finished = true;
+                }
             }
-        }
         }
     }
 }
